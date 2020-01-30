@@ -11,7 +11,7 @@ jobs:
     - BUILD_DIR=build
     - GITHUB_RELEASE_FILENAME=release-notes.zip
     script:
-    - zip -r $GITHUB_RELEASE_FILENAME ./ -x "*.git*" "*.travis.yml*" && mkdir $BUILD_DIR && mv $GITHUB_RELEASE_FILENAME $BUILD_DIR/
+    - zip -r $GITHUB_RELEASE_FILENAME ./ -x "*.git*" -x "changelog.txt" -x "*.travis.yml*" && mkdir $BUILD_DIR && mv $GITHUB_RELEASE_FILENAME $BUILD_DIR/
     before_deploy:
     - curl -LO https://raw.githubusercontent.com/bmlt-enabled/release-notes-tool/master/release-notes.sh
     - chmod +x release-notes.sh
