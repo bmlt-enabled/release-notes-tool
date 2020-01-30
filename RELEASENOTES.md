@@ -2,9 +2,9 @@
 
 ### 3.6.3 (UNRELEASED)
 * Added auto selecting of service body when only one is available to current user. [#377]
-* Changed default menu option for dialback to 9.
+* Changed `default` menu option for dialback to 9.
 * Fix for speech gathering option [#372]
-* Fix for aligning metrics summary colors with map pins for reports. [#370]
+* Fix for aligning [hi](https://bmlt.app) metrics summary colors with map pins for reports. [#370]
 * Fix to prevent Twilio credentials from being overridden mid-call [#375]
 
 ### 3.6.2 (January 18, 2020)

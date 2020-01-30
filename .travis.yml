@@ -15,7 +15,7 @@ jobs:
     before_deploy:
     - curl -LO https://raw.githubusercontent.com/bmlt-enabled/release-notes-tool/master/release-notes.sh
     - chmod +x release-notes.sh
-    - ./release-notes.sh RELEASENOTES.md "###"
+    - ./release-notes.sh readme.txt "="
     deploy:
     - provider: releases
       edge: true
