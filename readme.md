@@ -18,13 +18,13 @@ yap (RELEASENOTES.md).
 
 Usage with yaps RELEASENOTES.md
 
-```bash
+```sh
 ./release-notes.sh RELEASENOTES.md "###"
 ```
 
 Usage with a WordPress readme.txt
 
-```bash
+```sh
 ./release-notes.sh readme.txt "="
 ```
 
@@ -52,7 +52,7 @@ release_notes_file: "changelog.txt"
 ```yaml
     before_deploy:
     - curl -LO https://raw.githubusercontent.com/bmlt-enabled/release-notes-tool/master/release-notes.sh
-    - chmod +x deploy-wordpress.sh
+    - chmod +x release-notes.sh
     - ./release-notes.sh readme.txt "="
     deploy:
     - provider: releases
