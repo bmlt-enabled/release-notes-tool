@@ -14,8 +14,8 @@ WordPress just uses `= 1.0.0 =`.
 
 ## Examples
 
-See releases in this repo of builds using the following two examples [https://github.com/bmlt-enabled/release-notes-tool/releases](https://github.com/bmlt-enabled/release-notes-tool/releases) I have included two different formats of release notes files to test with WordPress (readme.txt) and 
-yap (RELEASENOTES.md).
+See releases in this repo of builds using the following two examples [https://github.com/bmlt-enabled/release-notes-tool/releases](https://github.com/bmlt-enabled/release-notes-tool/releases) I have included two different formats of release notes files to test with WordPress (readme.txt), 
+yap (RELEASENOTES.md). and root server (README.md).
 
 Usage with yaps RELEASENOTES.md
 
@@ -27,6 +27,12 @@ Usage with a WordPress readme.txt
 
 ```sh
 ./release-notes.sh readme.txt "="
+```
+
+Usage with a Root Server README.md
+
+```bash
+./release-notes.sh rootserver.md "*Version"
 ```
 
 ## Using with travis
