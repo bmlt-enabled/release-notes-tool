@@ -1,0 +1,28 @@
+language: php
+os: linux
+
+php:
+- '7.1'
+jobs:
+  include:
+
+  - stage: zip file
+    env:
+    - BUILD_DIR=build
+    - GITHUB_RELEASE_FILENAME=release-notes.zip
+    script:
+    - zip -r $GITHUB_RELEASE_FILENAME ./ -x "*.git*" "*.travis.yml*" && mkdir $BUILD_DIR && mv $GITHUB_RELEASE_FILENAME $BUILD_DIR/
+    before_deploy:
+    - curl -LO https://raw.githubusercontent.com/bmlt-enabled/release-notes-tool/master/release-notes.sh
+    - chmod +x release-notes.sh
+    - ./release-notes.sh readme.txt "###"
+    deploy:
+    - provider: releases
+      edge: true
+      release_notes_file: "changelog.txt"
+      token:
+        secure: LA2HzAT+M+mQdEv6d5Pdd7vOgYuXvxnoGJLu8SwjYcWMZWR2MWDBeJv5TqmUnh6JSjjjT9sMoezhndFA/LMJisJGrVWBNRKA17hUmrJjcNgQng5B5febnAMbrXfqEaA9rKLsx5H9S8BesDWp2BWaOF4zzQITlClnubuYPS5t44m1S9vweLOAg+1+q/2AjvrEra7diQQZqwFutbukEPsJ6yyrJvEuMCj7J0yydpAmsi5X9Uc2cMn8e2ZsWi49QAhULpSvUzLL7FnBL1QZi7RjUtAQBmntVc8oZXk/bJdwEDKaHMG5kRs5RD2h/h0spaeb23SgqbZ2scWg2osU6YWAEOj1XQXI+irxFU9pVBWD46NcgBLbeu/G2zvDvePTVKpgwkrOxwSakqIhaeAxE4NUYnLuFBivIw8/QomPNHqbACSh9hZ9GV8Ejc9lYyK0SGD6OsYP3ipyfiG32Z01BMgBsLW20A1SVvFcjDc42uV4zmQQv9j0TNirwNiH290wQOG6Xg9ykhYZ7+IH45pxO7axlE83G/bMa7yf78ip7UAFny828NZY+1DEl7TtRHzooKIHuRYNOpUNakKWdLoheaoll+EIQ8jkitEvi7BfPxCyBlf6sA1Qs6q1wiQ79WkVhKsGQ7W4hugqE6WNpNGEDEGF3mM7Jc/gu1of/u2FBmKhv4g=
+      file: "$BUILD_DIR/$GITHUB_RELEASE_FILENAME"
+      name: "$TRAVIS_TAG"
+      on:
+        tags: true
