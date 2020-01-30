@@ -20,7 +20,7 @@
 #    exit 0
 #fi
 
-CHANGE=$(sed "/2.14.6/,/$2/!d;//d" $1 | awk 'NF')
+CHANGE=$(sed "/$TRAVIS_TAG/,/$2/!d;//d" $1 | awk 'NF')
 
 if [[ ${CHANGE} == *"License URI"* ]]; then
   # Since it could be a wordpress readme, latest version will be at top.
