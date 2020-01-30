@@ -1,1 +1,0 @@
-* Added option to show all service bodies regardless of if they have any contact info.
