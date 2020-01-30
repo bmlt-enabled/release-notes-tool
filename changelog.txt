@@ -1,2 +1,1 @@
-* Fix for null coordinate responses in map data. [#363]
-* Fix for service body name in reports.
+* Added option to show all service bodies regardless of if they have any contact info.

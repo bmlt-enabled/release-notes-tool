@@ -24,8 +24,8 @@ CHANGE=$(sed "/$TRAVIS_TAG/,/$2/!d;//d" $1 | awk 'NF')
 
 if [[ ${CHANGE} == *"License URI"* ]]; then
   # Since it could be a wordpress readme, latest version will be at top.
-  # this could be better but it works.
-  echo "$CHANGE" |  awk 'f{print;f=0} /License URI/{f=1}' > changelog.txt
+  # this could be better but it works.  # awk 'f{print;f=0} /License URI/{f=1}'
+  echo "$CHANGE" | sed 1,2d  > changelog.txt
 else
    echo "$CHANGE" > changelog.txt
 fi
