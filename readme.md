@@ -10,6 +10,7 @@ WordPress just uses `= 1.0.0 =`.
 ## What it does
 - Reads a file and looks for changelog for version.
 - Exports to a file named changelog.txt that can be specified in travis.
+- If the script runs but fails for reasons beyond current checks, the last commit message will be used for the release notes.
 
 ## Examples
 
