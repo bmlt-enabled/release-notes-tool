@@ -32,7 +32,7 @@ Usage with a WordPress readme.txt
 Usage with a Root Server README.md
 
 ```bash
-./release-notes.sh rootserver.md "*Version"
+./release-notes.sh README.md "*Version"
 ```
 
 ## Using with travis
