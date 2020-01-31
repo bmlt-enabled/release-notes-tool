@@ -26,7 +26,7 @@ Usage with yaps RELEASENOTES.md
 Usage with a WordPress readme.txt
 
 ```sh
-./release-notes.sh readme.txt "="
+./release-notes.sh readme.txt "wp"
 ```
 
 Usage with a Root Server README.md

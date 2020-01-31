@@ -20,12 +20,10 @@ if [[ -z "$1" ]] || [[ -z "$2" ]]; then
     exit 0
 fi
 
-CHANGE=$(sed "/$TRAVIS_TAG/,/$2/!d;//d" $1 | awk 'NF')
-
-if [[ ${CHANGE} == *"License URI"* ]]; then
-  # Since it could be a wordpress readme, latest version will be at top.
-  # this could be better but it works.  # awk 'f{print;f=0} /License URI/{f=1}'
-  echo "$CHANGE" | sed 1,2d  > changelog.txt
+if [[ "$2" == *"wp"* ]]; then
+  CHANGE=$(sed -e '1,/= Changelog =/d' $1 | sed "/$TRAVIS_TAG/,/=/!d;//d" | awk 'NF')
 else
-   echo "$CHANGE" > changelog.txt
+   CHANGE=$(sed "/$TRAVIS_TAG/,/$2/!d;//d" $1 | awk 'NF')
 fi
+
+echo "$CHANGE" > changelog.txt
