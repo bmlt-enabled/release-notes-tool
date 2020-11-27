@@ -12,7 +12,7 @@ if [[ -z "$GITHUB_REF" ]]; then
     exit 0
 fi
 
-$TAG="${GITHUB_REF##*/}"
+TAG="${GITHUB_REF##*/}"
 
 # if required params are not set we abort
 if [[ -z "$1" ]] || [[ -z "$2" ]]; then
@@ -21,7 +21,7 @@ if [[ -z "$1" ]] || [[ -z "$2" ]]; then
 fi
 
 if [[ "$2" == *"wp"* ]]; then
-  CHANGE=$(sed -e '1,/= Changelog =/d' $1 | sed "/$TAG/,/=/!d;//d" | awk 'NF')
+   CHANGE=$(sed -e '1,/= Changelog =/d' $1 | sed "/$TAG/,/=/!d;//d" | awk 'NF')
 else
    CHANGE=$(sed "/$TAG/,/$2/!d;//d" $1 | awk 'NF')
 fi
