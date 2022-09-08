@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# if travis isn't calling the script we abort
+# if CI isn't calling the script we abort
 if [[ -z "$CI" ]]; then
     echo "Script is only to be run by Github Actions" 1>&2
     exit 1
 fi
 
 # if tag isn't set we abort
-if [[ -z "$GITHUB_REF" ]]; then
-    echo "Tag not set, changelog export." 1>&2
+if [[ "$GITHUB_REF_TYPE" != "tag" ]]; then
+    echo "Tag not set, aborting changelog export." 1>&2
     exit 0
 fi
 
-TAG="${GITHUB_REF##*/}"
+TAG="${GITHUB_REF_NAME%%-*}"
 
 # if required params are not set we abort
 if [[ -z "$1" ]] || [[ -z "$2" ]]; then
